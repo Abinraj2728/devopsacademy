@@ -64,7 +64,7 @@ function App() {
 
       setOutput(stdout || "Code ran successfully, but no output was printed.");
 
-      // 3. Grading logic (checking if it matches expected output)
+      // 3. Grading logic
       if (stdout.trim() === lessonData.expectedOutput.trim()) {
         setOutput(stdout + "\n✅ Success! You can move to the next lesson.");
       } else {
@@ -72,7 +72,6 @@ function App() {
       }
 
     } catch (error) {
-      // Catch Python syntax errors
       setOutput("Python Error:\n" + error.message);
     } finally {
       setIsRunning(false);
