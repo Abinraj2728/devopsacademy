@@ -1,22 +1,31 @@
 import { useState, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
 import TutorPanel from './TutorPanel';
+import { useParams, useNavigate } from 'react-router-dom';
 import { ClientBox } from 'clientbox';
 import './App.css';
 
 const box = new ClientBox();
 
-export default function LessonEngine({ lesson, onBack }) {
-  const [code, setCode] = useState(lesson.starterCode);
+export default function LessonEngine({ lessonsData }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const lesson = lessonsData[id];
+
+  const [code, setCode] = useState("");
   const [output, setOutput] = useState("Awaiting execution...");
   const [isRunning, setIsRunning] = useState(false);
   const [htmlPreview, setHtmlPreview] = useState("");
 
   useEffect(() => {
-    setCode(lesson.starterCode);
-    setOutput("Awaiting execution...");
-    setHtmlPreview("");
+    if (lesson) {
+      setCode(lesson.starterCode);
+      setOutput("Awaiting execution...");
+      setHtmlPreview("");
+    }
   }, [lesson]);
+
+  if (!lesson) return <div style={{ padding: '50px' }}>Lesson not found!</div>;
 
   const handleRunCode = async () => {
     setIsRunning(true);
@@ -70,7 +79,7 @@ export default function LessonEngine({ lesson, onBack }) {
     <div style={{ display: 'flex', height: '100vh', fontFamily: 'Segoe UI, sans-serif' }}>
       
       <div style={{ width: '30%', padding: '30px', backgroundColor: '#fff', borderRight: '1px solid #ddd', overflowY: 'auto' }}>
-        <button onClick={onBack} style={{ marginBottom: '20px', padding: '8px 12px', background: '#333', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+        <button onClick={() => navigate('/roadmap')} style={{ marginBottom: '20px', padding: '8px 12px', background: '#333', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
           ← Back to Roadmap
         </button>
         <h1 style={{ fontSize: '22px', marginBottom: '15px', color: '#111' }}>{lesson.title}</h1>

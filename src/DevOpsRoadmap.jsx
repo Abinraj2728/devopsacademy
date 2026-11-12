@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import ReactFlow, { Background, Controls } from 'reactflow';
+import { useNavigate } from 'react-router-dom';
 import 'reactflow/dist/style.css';
 
 const initialNodes = [
@@ -15,14 +16,19 @@ const initialEdges = [
   { id: 'e1-4', source: '1', target: '4', animated: true },
 ];
 
-export default function DevOpsRoadmap({ onSelectLesson }) {
+export default function DevOpsRoadmap() {
+  const navigate = useNavigate();
+
   const onNodeClick = useCallback((event, node) => {
-    onSelectLesson(node.data.lessonId);
-  }, [onSelectLesson]);
+    navigate(`/lesson/${node.data.lessonId}`);
+  }, [navigate]);
 
   return (
     <div style={{ width: '100vw', height: '100vh', background: '#f7f9fc' }}>
       <div style={{ position: 'absolute', top: 20, left: 20, zIndex: 10 }}>
+        <button onClick={() => navigate('/')} style={{ marginBottom: '10px', padding: '8px 12px', background: '#333', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+          ← Back to Home
+        </button>
         <h1 style={{ fontSize: '28px', margin: 0, color: '#111' }}>Multi-Language Master Roadmap</h1>
         <p style={{ margin: '5px 0', color: '#666', fontSize: '16px' }}>Select a language to start learning.</p>
       </div>
