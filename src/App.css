@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f7f9fc;
+}
+
+/* LEFT SIDE: Explanation */
+.left-panel {
+  width: 40%;
+  padding: 40px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+}
+
+.left-panel h1 {
+  font-size: 24px;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.left-panel p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+}
+
+/* RIGHT SIDE: Editor & Console */
+.right-panel {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 15px;
+}
+
+.editor-container {
+  flex: 2;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1e1e1e;
+}
+
+.console-container {
+  flex: 1;
+  background-color: #000000;
+  color: #00ff00;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  overflow-y: auto;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #038f5b;
+}
+
+button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
