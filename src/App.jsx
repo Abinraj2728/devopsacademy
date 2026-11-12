@@ -6,8 +6,7 @@ import { lessonsData } from './lessons';
 
 export default function App() {
   return (
-    // We use basename to tell React the app lives in the /devopsacademy/ folder
-    <HashRouter basename="/devopsacademy">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/roadmap" element={<DevOpsRoadmap />} />
