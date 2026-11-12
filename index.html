@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DevOps Academy</title>
     
-    <!-- Loads Python (Pyodide) -->
+    <!-- 1. The Service Worker (MUST BE FIRST FOR CLIENTBOX TO WORK) -->
+    <script src="/coi-serviceworker.js"></script>
+    
+    <!-- 2. Python Engine (Pyodide) - Kept as a backup/fallback -->
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     
   </head>
