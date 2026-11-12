@@ -6,36 +6,68 @@ export default function Home() {
   return (
     <div style={{ fontFamily: 'Segoe UI, sans-serif', minHeight: '100vh', backgroundColor: '#0f172a', color: 'white' }}>
       
-      {/* Navbar */}
-      <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '20px 50px', borderBottom: '1px solid #1e293b' }}>
-        <h1 style={{ margin: 0, fontSize: '24px', color: '#38bdf8' }}>DevOps Academy</h1>
-        <button 
-          onClick={() => navigate('/roadmap')}
-          style={{ padding: '8px 16px', backgroundColor: '#38bdf8', color: '#0f172a', border: 'none', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer' }}
-        >
-          Go to Roadmap
-        </button>
+      {/* 1. TOP NAVIGATION BAR */}
+      <nav style={{ display: 'flex', alignItems: 'center', padding: '10px 20px', backgroundColor: '#1e293b', borderBottom: '1px solid #334155', gap: '20px' }}>
+        <h1 style={{ margin: 0, fontSize: '20px', color: '#38bdf8', cursor: 'pointer' }} onClick={() => navigate('/')}>DevOps Academy</h1>
+        <div style={{ display: 'flex', gap: '15px', fontSize: '14px' }}>
+          <span style={{ cursor: 'pointer', fontWeight: 'bold' }} onClick={() => navigate('/roadmap')}>Roadmap</span>
+          <span style={{ cursor: 'pointer', color: '#94a3b8' }}>Tutorials</span>
+          <span style={{ cursor: 'pointer', color: '#94a3b8' }}>Exercises</span>
+          <span style={{ cursor: 'pointer', color: '#94a3b8' }}>Certificates</span>
+        </div>
       </nav>
 
-      {/* Hero Section */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: 'calc(100vh - 80px)', textAlign: 'center', padding: '0 20px' }}>
-        <h1 style={{ fontSize: '64px', margin: '0 0 20px 0', background: 'linear-gradient(to right, #38bdf8, #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-          Master DevOps Interactively
-        </h1>
-        <p style={{ fontSize: '20px', color: '#94a3b8', maxWidth: '600px', marginBottom: '40px', lineHeight: '1.6' }}>
-          Stop watching tutorials. Start writing code. Learn Python, Java, JavaScript, and DevOps tools with our AI-powered interactive editor.
-        </p>
+      {/* 2. DASHBOARD CONTENT */}
+      <div style={{ maxWidth: '1000px', margin: '40px auto', padding: '0 20px' }}>
         
-        <div style={{ display: 'flex', gap: '20px' }}>
-          <button 
-            onClick={() => navigate('/roadmap')}
-            style={{ padding: '16px 32px', fontSize: '18px', backgroundColor: '#38bdf8', color: '#0f172a', border: 'none', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', transition: 'transform 0.2s' }}
-          >
-            Start Learning for Free
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '40px' }}>
+          <h1 style={{ fontSize: '48px', margin: 0 }}>Hi, Abinraj 👋</h1>
+        </div>
+        <p style={{ fontSize: '20px', color: '#94a3b8', marginBottom: '40px' }}>
+          Keep your streak alive and pick up right where you left off.
+        </p>
+
+        <div style={{ display: 'flex', gap: '20px', marginBottom: '40px' }}>
+          <button onClick={() => navigate('/roadmap')} style={{ padding: '12px 24px', backgroundColor: '#04AA6D', color: 'white', border: 'none', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer', fontSize: '16px' }}>
+            Continue Learning
+          </button>
+          <button onClick={() => navigate('/roadmap')} style={{ padding: '12px 24px', backgroundColor: 'transparent', color: '#38bdf8', border: '1px solid #38bdf8', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer', fontSize: '16px' }}>
+            All Tutorials &gt;
           </button>
         </div>
-      </div>
 
+        {/* Stats Grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '40px' }}>
+          {[
+            { label: 'Total XP', value: '0', icon: '⚡' },
+            { label: 'Day Streak', value: '1', icon: '🔥' },
+            { label: 'Weekly League', value: 'Join', icon: '🏆' },
+            { label: 'Certificates', value: 'View', icon: '📜' }
+          ].map((stat, i) => (
+            <div key={i} style={{ backgroundColor: '#1e293b', padding: '20px', borderRadius: '12px', textAlign: 'center', border: '1px solid #334155' }}>
+              <div style={{ fontSize: '32px', marginBottom: '10px' }}>{stat.icon}</div>
+              <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#38bdf8' }}>{stat.value}</div>
+              <div style={{ fontSize: '14px', color: '#94a3b8', marginTop: '5px' }}>{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Action Cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+          {[
+            { title: 'Spaces', desc: 'Build & host', icon: '💻' },
+            { title: 'Challenges', desc: 'Test your skills', icon: '🎯' },
+            { title: 'Certificates', desc: 'Get certified', icon: '🎓' }
+          ].map((card, i) => (
+            <div key={i} style={{ backgroundColor: '#1e293b', padding: '25px', borderRadius: '12px', border: '1px solid #334155', cursor: 'pointer' }}>
+              <div style={{ fontSize: '32px', marginBottom: '15px' }}>{card.icon}</div>
+              <h3 style={{ margin: '0 0 5px 0', fontSize: '18px' }}>{card.title}</h3>
+              <p style={{ margin: 0, color: '#94a3b8', fontSize: '14px' }}>{card.desc}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
     </div>
   );
 }
