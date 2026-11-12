@@ -8,5 +8,6 @@ export default defineConfig({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    minify: false, // <-- THIS FIXES THE CLIENTBOX BUILD ERROR
   },
 })
